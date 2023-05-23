@@ -8,6 +8,7 @@ import {Navigation} from "@/components/layout/navigation/Navigation";
 import {LayoutFooter} from "@/components/layout/footer/LayoutFooter";
 import {LayoutHeader} from "@/components/layout/header/LayoutHeader";
 const inter = Inter({ subsets: ['latin'] })
+import styles from '../styles/page.module.css'
 
 export default function RootLayout({children}) {
   return (
@@ -21,7 +22,7 @@ export default function RootLayout({children}) {
               <Header>
                   <LayoutHeader />
               </Header>
-              <Content>{children}</Content>
+              <Content className={styles.main}>{children}</Content>
               <Footer>
                   <LayoutFooter />
               </Footer>
