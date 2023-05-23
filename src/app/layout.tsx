@@ -4,6 +4,9 @@ import {Inter} from 'next/font/google'
 import {Layout} from "antd";
 import Sider from "antd/es/layout/Sider";
 import {Content, Footer, Header} from "antd/es/layout/layout";
+import {Navigation} from "@/components/layout/navigation/Navigation";
+import {LayoutFooter} from "@/components/layout/footer/LayoutFooter";
+import {LayoutHeader} from "@/components/layout/header/LayoutHeader";
 const inter = Inter({ subsets: ['latin'] })
 
 export default function RootLayout({children}) {
@@ -11,11 +14,17 @@ export default function RootLayout({children}) {
     <html lang="en">
       <body className={inter.className}>
       <Layout>
-          <Sider>Sider</Sider>
+          <Sider>
+              <Navigation />
+          </Sider>
           <Layout>
-              <Header>Header</Header>
+              <Header>
+                  <LayoutHeader />
+              </Header>
               <Content>{children}</Content>
-              <Footer>Footer</Footer>
+              <Footer>
+                  <LayoutFooter />
+              </Footer>
           </Layout>
       </Layout>
       </body>
