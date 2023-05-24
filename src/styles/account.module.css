@@ -1,0 +1,15 @@
+.accountView {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-evenly;
+    width: 100%;
+    color: black;
+}
+
+.accountViewInfo {
+    margin: 2rem;
+}
+
+.accountViewFunctions {
+    margin: 2rem;
+}
