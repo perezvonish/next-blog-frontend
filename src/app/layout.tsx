@@ -18,6 +18,7 @@ import {
     UserOutlined
 } from "@ant-design/icons";
 import {LayoutHeader} from "@/components/layout/header/LayoutHeader";
+import {usePathname, useRouter} from "next/navigation";
 
 type MenuItem = Required<MenuProps>['items'][number];
 
@@ -39,16 +40,19 @@ function getItem(
 
 const items = [
     getItem("Posts", "posts", <FolderOutlined />, [
-        getItem("View posts", "view posts", <SnippetsOutlined />),
-        getItem("Create post", "create post", <FormOutlined />)
+        getItem("View posts", "/", <SnippetsOutlined />),
+        getItem("Create post", "/posts/create", <FormOutlined />)
     ]),
     getItem("Account", "account", <UserOutlined /> , [
-        getItem("View account", "view account", <InfoCircleOutlined />),
-        getItem("Edit account", "edit account", <EditOutlined />),
+        getItem("View account", "/me", <InfoCircleOutlined />),
+        getItem("Edit account", "/me/edit", <EditOutlined />),
     ]),
 ];
 
 export default function RootLayout({children}) {
+    const router = useRouter()
+    const selectedMenu = usePathname()
+
     const [collapsed, setCollapsed] = useState(false);
 
   return (
@@ -57,7 +61,7 @@ export default function RootLayout({children}) {
       <Layout>
           <Sider trigger={null} collapsible collapsed={collapsed}>
               <div>
-                  <Menu mode="inline" defaultSelectedKeys="view posts" theme="dark" items={items} />
+                  <Menu mode="inline" defaultSelectedKeys="view posts" theme="dark" items={items} onSelect={({key}) => router.push(key)} />
               </div>
           </Sider>
           <Layout>
