@@ -34,7 +34,25 @@
 }
 
 .writePost {
+    width: 50%;
     color: black;
-    border-top: 3px black solid;
-    border-bottom: 3px black solid;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    margin: 2rem;
+}
+
+.writePostInput {
+    margin: 2rem;
+}
+
+.writePostButtons {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    margin: 1rem 2rem;
+}
+
+.writePostButtons Button {
+    margin: 0 1rem;
 }
