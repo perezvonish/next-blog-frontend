@@ -19,3 +19,15 @@
     justify-content: center;
     align-items: center;
 }
+
+.layoutFooter {
+    color: black;
+    display: flex;
+    justify-content: space-between;
+    margin: 2rem;
+}
+
+.layoutFooterDevInfo {
+    display: flex;
+    margin: 1rem;
+}

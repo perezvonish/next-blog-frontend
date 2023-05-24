@@ -6,7 +6,9 @@ import Sider from "antd/es/layout/Sider";
 import {Content, Footer, Header} from "antd/es/layout/layout";
 import {LayoutFooter} from "@/components/layout/footer/LayoutFooter";
 const inter = Inter({ subsets: ['latin'] })
-import styles from '../styles/layout.module.css'
+import layoutStyles from '../styles/layout.module.css'
+import styles from '../styles/page.module.css'
+
 import React, {useState} from "react";
 import {
     EditOutlined,
@@ -65,7 +67,7 @@ export default function RootLayout({children}) {
               </div>
           </Sider>
           <Layout>
-              <Header id={styles.header}>
+              <Header id={layoutStyles.header}>
                   <Button
                       type="text"
                       icon={collapsed ? <MenuUnfoldOutlined /> : <MenuFoldOutlined />}
@@ -79,9 +81,7 @@ export default function RootLayout({children}) {
                   <LayoutHeader />
               </Header>
               <Content className={styles.main}>{children}</Content>
-              <Footer>
-                  <LayoutFooter />
-              </Footer>
+              <LayoutFooter />
           </Layout>
       </Layout>
       </body>
