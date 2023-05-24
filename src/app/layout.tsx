@@ -46,8 +46,8 @@ const items = [
         getItem("Create post", "/posts/create", <FormOutlined />)
     ]),
     getItem("Account", "account", <UserOutlined /> , [
-        getItem("View account", "/me", <InfoCircleOutlined />),
-        getItem("Edit account", "/me/edit", <EditOutlined />),
+        getItem("View account", "/account", <InfoCircleOutlined />),
+        getItem("Edit account", "/account/edit", <EditOutlined />),
     ]),
 ];
 
