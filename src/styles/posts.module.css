@@ -1,3 +1,30 @@
+.post {
+    color: black;
+}
+
+.postFooter {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    margin: 1rem;
+}
+
+.postFooterInfo {
+    display: flex;
+    flex-direction: row;
+}
+
+.postFooterInfo div {
+    display: flex;
+    flex-direction: row;
+    text-align: center;
+    align-items: center;
+}
+
+.postFooter * {
+    margin: 0.4rem;
+}
+
 .writePost {
     color: black;
     border-top: 3px black solid;
