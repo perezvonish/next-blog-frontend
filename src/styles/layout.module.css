@@ -1,0 +1,21 @@
+#header {
+    background-color: white;
+    display: flex;
+    flex-direction: row;
+}
+
+#LayoutHeader {
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-end;
+    margin: 1rem;
+    width: 100%;
+    color: red;
+}
+
+#LayoutHeader Button {
+    margin-left: 1rem;
+    text-align: center;
+    justify-content: center;
+    align-items: center;
+}
