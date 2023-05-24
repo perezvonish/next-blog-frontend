@@ -56,3 +56,23 @@
 .writePostButtons Button {
     margin: 0 1rem;
 }
+
+.viewPost {
+    display: flex;
+    flex-direction: column;
+    margin: 1rem;
+    width: 100%;
+    color: black;
+}
+
+.viewPostTitle {
+    margin: 1rem 2rem;
+    font-size: 3rem;
+}
+
+.viewPostRow {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-evenly;
+    margin: 1rem 2rem;
+}
