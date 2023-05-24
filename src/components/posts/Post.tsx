@@ -2,7 +2,7 @@
 
 import React from "react";
 import styles from "../../styles/posts.module.css"
-import {Divider} from "antd";
+import {Button, Divider} from "antd";
 import {CommentOutlined, DislikeOutlined, LikeOutlined, UserOutlined, WarningOutlined} from "@ant-design/icons";
 
 export const Post: React.FC = () => {
@@ -33,6 +33,12 @@ export const Post: React.FC = () => {
                         <p>perezvonish</p>
                     </div>
                 </div>
+
+            </div>
+            <div className={styles.postFooterRead}>
+                <Button type="primary" size="small">
+                    Read more..
+                </Button>
             </div>
             <Divider />
         </div>

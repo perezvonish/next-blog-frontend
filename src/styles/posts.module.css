@@ -2,6 +2,10 @@
     color: black;
 }
 
+.post p {
+    margin: 1rem 2rem;
+}
+
 .postFooter {
     display: flex;
     flex-direction: row;
@@ -19,6 +23,10 @@
     flex-direction: row;
     text-align: center;
     align-items: center;
+}
+
+.postFooterRead {
+    margin: 1rem 2rem;
 }
 
 .postFooter * {
