@@ -1,10 +1,38 @@
 import React from "react";
-import {Button, Checkbox, Form, Input} from "antd";
-import {IdcardOutlined} from "@ant-design/icons";
+import {Button, Form, Input, notification} from "antd";
+import {AuthRegister} from "@/api/dto/auth.dto";
+import {LoadingOutlined} from "@ant-design/icons";
 
 export const RegisterForm: React.FC =() => {
-    const onSubmit = (data) => {
+        const sendSuccessAlert = () => {
+        notification.success({
+            key: "successRegistration",
+            message: "Success!",
+            description: "Account was registered!",
+            placement: "top",
+            duration: 2,
+            closeIcon: null,
+            style: {
+                border: "3px solid green"
+            },
+        })
+    }
 
+    const onSubmit = (data: AuthRegister) => {
+        notification.info({
+            key: "register",
+            message: "Wait, please!",
+            description: "We are registering your account.",
+            placement: "top",
+            duration: null,
+            icon: <LoadingOutlined />,
+            closeIcon: null,
+        })
+
+        setTimeout(() => {
+            notification.destroy("register")
+            sendSuccessAlert()
+        }, 3000)
     }
 
     return (
@@ -14,7 +42,7 @@ export const RegisterForm: React.FC =() => {
             wrapperCol={{ span: 16 }}
             style={{ maxWidth: 600 }}
             initialValues={{ remember: true }}
-            // onFinish={onFinish}
+            onFinish={onSubmit}
             // onFinishFailed={onFinishFailed}
             autoComplete="off"
         >
