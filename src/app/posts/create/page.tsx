@@ -3,30 +3,32 @@ import React, {useState} from "react";
 import {Button, Input, message, Steps} from "antd";
 import styles from "../../../styles/posts.module.css"
 
-const steps = [
-    {
-        title: 'Set title',
-        content: <div>
-            <Input key="title" size="large" placeholder="Title of the post" />
-        </div>
-    },
-    {
-        title: 'Write text',
-        content: <div>
-            <Input key="description" size="large" placeholder="Write text" />
-        </div>
-    },
-    {
-        title: 'Submit',
-        content: <div>
-            <p>Title text</p>
-            <p>text description</p>
-        </div>,
-    },
-];
-
 export default function Home() {
     const [current, setCurrent] = useState(0);
+    const [title, setTitle] = useState("");
+    const [description, setDescription] = useState("");
+
+    const steps = [
+        {
+            title: 'Set title',
+            content: <div>
+                <Input key="title" size="large" placeholder="Title of the post" onChange={(e) => setTitle(e.target.value)}/>
+            </div>
+        },
+        {
+            title: 'Write text',
+            content: <div>
+                <Input key="description" size="large" placeholder="Write text" onChange={(e) => setDescription(e.target.value)}/>
+            </div>
+        },
+        {
+            title: 'Submit',
+            content: <div>
+                <p>{title || ""}</p>
+                <p>{description || ""}</p>
+            </div>,
+        },
+    ];
 
     const next = () => {
         setCurrent(current + 1);
