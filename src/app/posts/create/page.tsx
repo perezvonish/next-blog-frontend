@@ -1,7 +1,8 @@
 "use client"
 import React, {useState} from "react";
-import {Button, Input, message, Steps} from "antd";
+import {Button, Input, message, notification, Steps} from "antd";
 import styles from "../../../styles/posts.module.css"
+import {LoadingOutlined} from "@ant-design/icons";
 
 export default function Home() {
     const [current, setCurrent] = useState(0);
@@ -38,6 +39,50 @@ export default function Home() {
         setCurrent(current - 1);
     };
 
+    const onSubmit = () => {
+        notification.info({
+            key: "publishPost",
+            message: "Wait, please!",
+            description: "We are publishing your post",
+            placement: "top",
+            duration: null,
+            icon: <LoadingOutlined />,
+            closeIcon: null,
+        })
+
+        try {
+            //todo api route
+        }
+        catch(err) {
+            notification.error({
+                key: "publish error",
+                message: "Error!",
+                description: "Rejected publish",
+                duration: 3,
+                placement: "top"
+            })
+        }
+        finally {
+            setTimeout(() => {
+                notification.destroy("publishPost")
+            }, 3000)
+        }
+
+        setTimeout(() => {
+            notification.success({
+                key: "success publish",
+                message: "Success!",
+                description: "Post published",
+                duration: 3,
+                placement: "top",
+                style: {
+                    border: "3px solid green"
+                },
+                closeIcon: null
+            })
+        }, 3000)
+    }
+
     const items = steps.map((item) => ({ key: item.title, title: item.title }));
 
     return (
@@ -58,7 +103,7 @@ export default function Home() {
                     </Button>
                 )}
                 {current === steps.length - 1 && (
-                    <Button type="primary" style={{backgroundColor: "green"}} onClick={() => message.success('Processing complete!')}>
+                    <Button type="primary" style={{backgroundColor: "green"}} onClick={() => onSubmit()}>
                         Done
                     </Button>
                 )}
