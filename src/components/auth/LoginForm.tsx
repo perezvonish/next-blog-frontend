@@ -1,29 +1,52 @@
 import {Button, Checkbox, Form, Input, notification} from "antd";
 import React from "react";
-import {AuthLogin} from "@/api/dto/auth.dto";
+import {AuthLogin, AuthToken} from "@/api/dto/auth.dto";
 
 import * as Api from "@/api"
+import {LoadingOutlined} from "@ant-design/icons";
 
 export const LoginForm: React.FC = () => {
     const onSubmit = async (data: AuthLogin) => {
+        let response: AuthToken
+
+        notification.info({
+            key: "login",
+            message: "Wait, please!",
+            description: "We are logging in your account.",
+            placement: "top",
+            duration: null,
+            icon: <LoadingOutlined />,
+            closeIcon: null,
+        })
+
         try {
-            const {token} = Api.auth.login(data)
+            response = await Api.auth.login(data)
         }
         catch (err) {
             notification.error({
+                key: "login error",
                 message: "Error!",
-                description: <span>Rejected login, <b>{data.username}</b>!</span>,
+                description: "Rejected login",
                 duration: 3,
                 placement: "top"
             })
         }
+        finally {
+            notification.destroy("login")
+        }
 
-        notification.success({
-            message: "Success!",
-            description: <span>Welcome back, <b>{data.username}</b>!</span>,
-            duration: 3,
-            placement: "top"
-        })
+        if (response.token) {
+            notification.success({
+                key: "success login",
+                message: "Success!",
+                description: <span>Welcome back, <b>{data.username}</b>!</span>,
+                duration: 3,
+                placement: "top",
+                style: {
+                    border: "3px solid green"
+                },
+            })
+        }
     }
 
     return (

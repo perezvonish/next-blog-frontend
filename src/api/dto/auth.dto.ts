@@ -10,3 +10,7 @@ export interface AuthRegister {
     firstName: string
     secondName: string
 }
+
+export interface AuthToken {
+    token: string
+}

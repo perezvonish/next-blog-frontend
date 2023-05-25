@@ -4,19 +4,6 @@ import {AuthRegister} from "@/api/dto/auth.dto";
 import {LoadingOutlined} from "@ant-design/icons";
 
 export const RegisterForm: React.FC =() => {
-        const sendSuccessAlert = () => {
-        notification.success({
-            key: "successRegistration",
-            message: "Success!",
-            description: "Account was registered!",
-            placement: "top",
-            duration: 2,
-            closeIcon: null,
-            style: {
-                border: "3px solid green"
-            },
-        })
-    }
 
     const onSubmit = (data: AuthRegister) => {
         notification.info({
@@ -31,7 +18,18 @@ export const RegisterForm: React.FC =() => {
 
         setTimeout(() => {
             notification.destroy("register")
-            sendSuccessAlert()
+
+            notification.success({
+                key: "successRegistration",
+                message: "Success!",
+                description: "Account was registered!",
+                placement: "top",
+                duration: 2,
+                closeIcon: null,
+                style: {
+                    border: "3px solid green"
+                },
+            })
         }, 3000)
     }
 

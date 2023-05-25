@@ -1,7 +1,7 @@
 import axios from "axios";
-import {AuthLogin, AuthRegister} from "@/api/dto/auth.dto";
+import {AuthLogin, AuthRegister, AuthToken} from "@/api/dto/auth.dto";
 
-export const login = async (body: AuthLogin) => {
+export const login = async (body: AuthLogin): Promise<AuthToken> => {
     return (await axios.post('/auth/login', body)).data
 }
 
