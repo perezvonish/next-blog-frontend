@@ -87,8 +87,13 @@
     align-items: center;
 }
 
-.viewPostInfoBlock.viewPostInfoBlock * {
-    margin-left: 1rem;
+.viewPostInfoBlock Button{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+    margin: 1rem;
+    width: 5rem;
 }
 
 .viewPostRow {

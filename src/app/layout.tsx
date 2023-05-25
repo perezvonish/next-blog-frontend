@@ -67,7 +67,7 @@ export default function RootLayout({children}) {
               </div>
           </Sider>
           <Layout>
-              <Header id={layoutStyles.header}>
+              <Header key="1" id={layoutStyles.header}>
                   <Button
                       type="text"
                       icon={collapsed ? <MenuUnfoldOutlined /> : <MenuFoldOutlined />}

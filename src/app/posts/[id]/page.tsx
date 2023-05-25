@@ -1,11 +1,22 @@
 "use client"
 import styles from "../../../styles/posts.module.css"
-import {Col, Divider, Row} from "antd";
+import {Button, Col, Divider, Row} from "antd";
 import {PostView} from "@/components/posts/PostView";
 import {CommentOutlined, DislikeOutlined, LikeOutlined, UserOutlined} from "@ant-design/icons";
-import React from "react";
+import React, {useState} from "react";
 
 export default function ViewPost({params}) {
+    const [like, setLike] = useState(0)
+    const [dislike, setDislike] = useState(0)
+
+    const onLike = () => {
+        setLike(like + 1)
+    }
+
+    const onDislike = () => {
+        setDislike(dislike + 1)
+    }
+
     return (
         <div className={styles.viewPost}>
             <div className={styles.viewPostTitle}>
@@ -28,16 +39,16 @@ export default function ViewPost({params}) {
 
                 <div className={styles.postFooterInfo}>
                     <div className={styles.viewPostInfoBlock}>
-                        <p>130</p>
-                        <LikeOutlined style={{color: "green"}}/>
+                        <Button onClick={(e) => onLike()}>
+                            <p>{like}</p>
+                            <LikeOutlined style={{color: "green"}}/>
+                        </Button>
                     </div>
                     <div className={styles.viewPostInfoBlock}>
-                        <p>65</p>
-                        <DislikeOutlined style={{color: "red"}}/>
-                    </div>
-                    <div className={styles.viewPostInfoBlock}>
-                        <p>73</p>
-                        <CommentOutlined />
+                        <Button onClick={(e) => onDislike()}>
+                            <p>{dislike}</p>
+                            <DislikeOutlined style={{color: "red"}}/>
+                        </Button>
                     </div>
                 </div>
             </div>
