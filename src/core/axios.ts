@@ -4,11 +4,13 @@ import {parseCookies} from "nookies"
 axios.defaults.baseURL = "http://localhost:8080"
 
 axios.interceptors.request.use((config) => {
-    if (typeof window !== "undefined"){
-        const {token} = parseCookies()
+    if (typeof window !== "undefined") {
+        const { token } = parseCookies();
 
-        config.headers.Authorization = "Bearer " + token
+        config.headers.Authorization = "Bearer " + token;
     }
-})
+
+    return config;
+});
 
 export default axios

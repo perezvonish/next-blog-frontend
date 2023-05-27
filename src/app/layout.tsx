@@ -8,6 +8,7 @@ import {LayoutFooter} from "@/components/layout/footer/LayoutFooter";
 const inter = Inter({ subsets: ['latin'] })
 import layoutStyles from '../styles/layout.module.css'
 import styles from '../styles/page.module.css'
+import nookies, {parseCookies} from "nookies"
 
 import React, {useState} from "react";
 import {
@@ -19,7 +20,6 @@ import {
     SnippetsOutlined,
     UserOutlined
 } from "@ant-design/icons";
-import {LayoutHeader} from "@/components/layout/header/LayoutHeader";
 import {useRouter} from "next/navigation";
 
 type MenuItem = Required<MenuProps>['items'][number];
@@ -41,10 +41,11 @@ function getItem(
 }
 
 export default function RootLayout({children}) {
+    const cookies = parseCookies()
+    let isLogin = { cookies }.cookies.token ? true : false;
+
     const router = useRouter()
     const [collapsed, setCollapsed] = useState(false);
-
-    const isLogin = true;
 
   return (
     <html lang="en">
@@ -64,7 +65,6 @@ export default function RootLayout({children}) {
                   ] : [
                       getItem("Posts", "posts", <FolderOutlined />, [
                           getItem("View posts", "/", <SnippetsOutlined />),
-                          getItem("Create post", "/posts/create", <FormOutlined />)
                       ]),
                       getItem("Login", "/auth", <UserOutlined />)
                   ]} />

@@ -1,14 +1,14 @@
-import {Button, Checkbox, Form, Input, notification} from "antd";
+import {Button, Form, Input, notification} from "antd";
 import React from "react";
 import {AuthLogin, AuthToken} from "@/api/dto/auth.dto";
 
 import * as Api from "@/api"
 import {LoadingOutlined} from "@ant-design/icons";
+import {setCookie} from "nookies";
 
 export const LoginForm: React.FC = () => {
     const onSubmit = async (data: AuthLogin) => {
         let response: AuthToken
-
         notification.info({
             key: "login",
             message: "Wait, please!",
@@ -34,6 +34,8 @@ export const LoginForm: React.FC = () => {
         finally {
             notification.destroy("login")
         }
+
+        setCookie(null, "token", response.token)
 
         if (response.token) {
             notification.success({

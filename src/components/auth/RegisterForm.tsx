@@ -2,10 +2,12 @@ import React from "react";
 import {Button, Form, Input, notification} from "antd";
 import {AuthRegister} from "@/api/dto/auth.dto";
 import {LoadingOutlined} from "@ant-design/icons";
+import * as Api from "@/api";
 
 export const RegisterForm: React.FC =() => {
+    let response;
 
-    const onSubmit = (data: AuthRegister) => {
+    const onSubmit = async (data: AuthRegister) => {
         notification.info({
             key: "register",
             message: "Wait, please!",
@@ -16,21 +18,34 @@ export const RegisterForm: React.FC =() => {
             closeIcon: null,
         })
 
-        setTimeout(() => {
+        try {
+            response = await Api.auth.register(data)
+        }
+        catch (err) {
+            notification.error({
+                key: "registration error",
+                message: "Error!",
+                description: "Rejected registration",
+                duration: 3,
+                placement: "top"
+            })
+        }
+        finally {
             notification.destroy("register")
+        }
 
+        if (response) {
             notification.success({
-                key: "successRegistration",
+                key: "success register",
                 message: "Success!",
-                description: "Account was registered!",
+                description: <span>Account registered!</span>,
+                duration: 3,
                 placement: "top",
-                duration: 2,
-                closeIcon: null,
                 style: {
                     border: "3px solid green"
                 },
             })
-        }, 3000)
+        }
     }
 
     return (
